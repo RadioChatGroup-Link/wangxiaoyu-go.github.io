@@ -345,6 +345,10 @@ tests for the absence of set membership.
 ### Set Comparison
 **SOME**
  The phrase “greater than at least one” is represented in SQL by > **some**. 
+ `select ...from ... where a > some(...);`
+ →
+`select ...from ... where a > result1 or a > result2 or a > result3;`
+ 
  e.g.
  ```sql
  select name
@@ -353,13 +357,22 @@ where salary > some (select salary
 from instructor
 where dept name = ’Biology’);
 ```
+
+
 **some and in**:
 - **= some** is identical to **in**
 - **<> some** is **not** the same as **not in**
+>[the reference](http://www.cnblogs.com/blueoverflow/archive/2015/08/08/4712320.html#_label2)
+> - <> some: `select ...from ... where a <> result1 or a <> result2 or a <> result3;`
+ - not in = <>all: `select ...from ... where column NOT IN (value1,value2,...)`  equals
+ `select ...from ... where a <> result1 and a <> result2 and a <> result3;`
 <br>
 
 **ALL**
  The construct > **all** corresponds to the phrase “greater than all.” 
+  `select ...from ... where a > all(...);`
+ →
+`select ...from ... where a > result1 and a > result2 and a > result3;`
  e.g.
 ```sql
 select name
@@ -371,6 +384,135 @@ where dept name = ’Biology’);
 **all and in**:
 - **<> all** is identical to **not in**
 - **all** is not the same as **in**
+>[the reference](http://www.cnblogs.com/blueoverflow/archive/2015/08/08/4712320.html#_label2)
+> - all: `select ...from ... where a = result1 and a = result2 and a = result3;`
+ - in = some: `select ...from ... where column IN (value1,value2,...)`  equals
+ `select ...from ... where a = result1 or a = result2 or a = result3;`
 
 ### Test for Empty Relations
+**EXISTS**
+The exists construct returns the value true if the argument subquery is nonempty.
+It is legal to use only correlation names defined in the subquery itself or in any query that contains the subquery.
+e.g.
+```sql
+select course id
+from section as S
+where semester = ’Fall’ and year= 2009 and
+      exists (select *
+              from section as T
+              where semester = ’Spring’ and year= 2010 and
+                    S.course id= T.course id);
+```
+### Test for the Absence of Duplicate Tuples
+**unique**
+The unique construct returns the value true if the argument subquery contains no duplicate tuples. 
+The unique predicate would evaluate to **true** on the **empty set**.
+e.g. “Find all courses that were offered at most **once** in 2009” 
+```sql
+select T.course id
+from course as T
+where unique (select R.course id
+              from section as R
+              where T.course id= R.course id and
+                    R.year = 2009);
+```
+**not unique**
+We can test for the **existence of duplicate** tuples in a subquery by using the not unique construct.
+e.g. “Find all courses that were offered at least twice in 2009”
+```sql
+select T.course id
+from course as T
+where not unique (select R.course id
+                  from section as R
+                  where T.course id= R.course id and
+                       R.year = 2009);
+```
+### Scalar Subqueries
+```sql
+select dept name,
+     (select count(*)
+      from instructor
+      where department.dept name = instructor.dept name)
+    as num instructors
+from department;
+```
+SQL allows subqueries to occur wherever an expression returning a value is permitted, provided the subquery returns only one tuple containing a single attribute; such subqueries are called **scalar subqueries**. 
+
+## Modification of the Database
+### Deletion
+ We can delete only whole tuples.
+`delete from r where P;`
+The where clause can be omitted, in which case all tuples in r are deleted.
+e.g.`delete from instructor;`
+
+### Insertion
+- normal
+```sql
+insert into course
+       values (’CS-437’, ’Database Systems’, ’Comp. Sci.’, 4);
+```
+- with 'select'
+```sql
+insert into instructor
+       select ID, name, dept name, 18000
+       from student
+       where dept name = ’Music’ and tot cred > 144;
+```
+It is **important** that we evaluate the select statement fully before we carry out any insertions. 
+### Updates
+- appliy to each of the tuples
+e.g.
+```sql
+update instructor
+set salary= salary * 1.05;
+```
+- In general, the **where** clause of the update statement may contain any construct legal in the **where** clause of the **select** statement (including nested selects).
+ - e.g. of where
+ ```sql
+ update instructor
+ set salary = salary * 1.05
+ where salary < 70000;
+ ```
+ - e.g. of nested selects
+ ```sql
+ update instructor
+ set salary = salary * 1.05
+ where salary < (select avg (salary)
+ from instructor);
+ ```
+ 
+- **CASE**
+to avoide the problem with the order of updates
+The general form of the case statement is as follows:
+```sql
+case
+    when pred1 then result1
+    when pred2 then result2
+    . . .
+    when predn then resultn
+    else result0
+end
+```
+e.g.
+```sql
+update instructor
+set salary = case
+                 when salary <= 100000 then salary * 1.05
+                 else salary * 1.03
+               end
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
