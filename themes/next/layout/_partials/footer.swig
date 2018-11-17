@@ -40,6 +40,15 @@
 #}</div>
 {% endif %}
 
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+    }
+  </script>
+{% endif %}
+
 {% if theme.footer.custom_text %}
   <div class="footer-custom">{#
   #}{{ theme.footer.custom_text }}{#

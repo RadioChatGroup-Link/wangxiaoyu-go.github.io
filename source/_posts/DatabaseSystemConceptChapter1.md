@@ -42,12 +42,14 @@ describes **how** the data are actually stored
  - view level
  :    The highest level 
 
-```graph
+```mermaid
+graph TD;
     A[view 1] -->B(logical level)
     C[view 2] -->B(logical level)
     D[view n] -->B(logical level)
     B(logical level) -->E[physical level]
 ```
+
 ### Instances and Schemas
 instance
 :    The collection of information stored in the database at a particular moment
