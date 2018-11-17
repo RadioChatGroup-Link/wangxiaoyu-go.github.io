@@ -16,20 +16,21 @@ categories:
  - Universities
  - Airlines
  - Telecommunication
-## Purpose of Database Systems
-文件处理系统file-processing system **major disadvantages**
 
- - data redundancy and inconsistency
- - difficulty in accessing data
- - data isolation
- - integrity problem
- - atomicity problem
- - concurrent-access anomaly
- - security problem
+## Purpose of Database Systems
+file-processing system **major disadvantages**
+
+- data redundancy and inconsistency
+- difficulty in accessing data
+- data isolation
+- integrity problem
+- atomicity problem
+- concurrent-access anomaly
+- security problem
  
 ## View of Data
  A major purpose of a database system is to provide users with an ***abstract view*** of the data.
-### 数据抽象Data Abstraction
+### Data Abstraction
  - physical level
  :     The lowest level<br>
 describes **how** the data are actually stored
@@ -47,14 +48,14 @@ describes **how** the data are actually stored
     D[view n] -->B(logical level)
     B(logical level) -->E[physical level]
 ```
-### 实例和模式Instances and Schemas
+### Instances and Schemas
 instance
 :    The collection of information stored in the database at a particular moment
 
 schema
 :    The overall design of the database 
 
-### 数据模型Data Models
+### Data Models
 data model
 :    a collection of conceptual tools for describing data, data relationships, data semantics, and consistency constraints.
 
@@ -165,7 +166,7 @@ The transaction manager consists of :
 
 ## Database Architecture
 
-![figure1_5](20181114figure1_5.png) 
+![figure1_5](20181114figure1_5.PNG) 
 
 ## Data Mining and Information Retrieval
  data mining
