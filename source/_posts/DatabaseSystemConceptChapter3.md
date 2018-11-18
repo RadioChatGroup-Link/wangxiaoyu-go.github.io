@@ -322,10 +322,14 @@ The meaning of a query containing **aggregation, group by, or having clauses** i
 4. The **having** clause, if it is present, is applied to each group;<br>the groups that do not satisfy the having clause predicate are removed.
 5. The **select** clause uses the remaining groups to generate tuples of the result of the query, <br>applying the aggregate functions to get a single result tuple for each group.
 
-<br>
-<br>
-<br>
-- [ ] todo **这里要写个流程图**
+
+```mermaid
+graph LR;
+    A[from] -->B[where]
+    B[where] -->C[group by]
+    C[group by] -->D[having]
+    D[having] -->E[select]
+```
 
 ### Aggregation with Null and Boolean Values
 <i class="fa fa-exclamation fa-2x"></i> aggregate functions treat nulls according to the following rule:
