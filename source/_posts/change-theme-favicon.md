@@ -1,7 +1,10 @@
 ---
 title: 更换Hexo的网页图标/小图片Hexo change page favicon
 date: 2018-11-18 20:35:58
-tags: hexo, ThemeNext
+tags: 
+    - hexo
+    - ThemeNext
+
 categories: hexo
 
 ---
