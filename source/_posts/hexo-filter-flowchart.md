@@ -78,8 +78,8 @@ c2(no)->op2->e
 e.g.
 - 内容
 
-```
-    < raw >```<>flow
+````
+```flow
     st=>start: Start
     op=>operation: Your Operation
     cond=>condition: Yes or No?
@@ -90,7 +90,7 @@ e.g.
     cond(no)->op
     < raw >```< endraw >
 ```
-
+````
 
 
 
