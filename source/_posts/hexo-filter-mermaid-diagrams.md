@@ -77,12 +77,12 @@ graph TD;
     C-->D;
 ` ` `
 ````
-<i class="fa fa-thumb-tack" style="font-size:1em;"></i>  *mermaid前和最后的的三个点之间加了空格，显示效果时需要去掉空格*
+<i class="fa fa-thumb-tack" style="font-size:1em;"></i>  *mermaid前和最后的的三个点之间加了空格，实际使用时需要去掉空格*
 
 ## 效果
 
 至此已经完成了mermaid设定，在环境中也可以正常使用了。
-此时效果：
+此时效果截图：
 ![](mermaidbackground.PNG)
 
 

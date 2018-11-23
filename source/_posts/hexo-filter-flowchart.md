@@ -52,7 +52,7 @@ c2(no)->op2->e
 ` ` `
 ```
 
-<i class="fa fa-thumb-tack" style="font-size:1em;"> </i> *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)，显示效果时需要去掉空格*
+<i class="fa fa-thumb-tack" style="font-size:1em;"> </i> *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)，实际使用时需要去掉空格*
 
 
 
@@ -94,7 +94,7 @@ e.g.
 ```
 
 
-<i class="fa fa-thumb-tack" style="font-size:1em;"></i>  *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)，显示效果时需要去掉空格*
+<i class="fa fa-thumb-tack" style="font-size:1em;"></i>  *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)，实际使用时需要去掉空格*
 
 
 - 效果
