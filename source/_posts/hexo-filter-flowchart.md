@@ -8,7 +8,7 @@ categories: hexo
 
 
 以下是使用中的hexo插入flowchart的方法。
-2017年以后有了对应hexo的插件，感谢做插件的人。
+
 
 [github参考link](https://github.com/bubkoo/hexo-filter-flowchart)
 
@@ -18,8 +18,8 @@ npm 安装
  npm install --save hexo-filter-flowchart
  ```
  
-## 编辑配置文件
-在hexo的`_config.yml`文件中，添加以下内容：
+## 修改配置文件
+在hexo的`_config.yml`文件（根目录的并非主题的）中，添加以下内容：
 ```
 flowchart:
   # raphael:   # optional, the source url of raphael.js
@@ -52,7 +52,7 @@ c2(no)->op2->e
 ` ` `
 ```
 
-<i class="fa fa-thumb-tack" style="font-size:1em;"> </i> *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)*
+<i class="fa fa-thumb-tack" style="font-size:1em;"> </i> *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)，显示效果时需要去掉空格*
 
 
 
@@ -94,7 +94,7 @@ e.g.
 ```
 
 
-<i class="fa fa-thumb-tack" style="font-size:1em;"></i>  *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)*
+<i class="fa fa-thumb-tack" style="font-size:1em;"></i>  *flow前后的三个点之间加了空格(环境限制无法嵌套引用flow)，显示效果时需要去掉空格*
 
 
 - 效果
@@ -111,5 +111,8 @@ cond(no)->op
 ```
 
 
+<br>
+本地环境就能看到效果了。
+其他还是执行`hexo g`, `hexo d`发布网站到master分支上。
 
 
