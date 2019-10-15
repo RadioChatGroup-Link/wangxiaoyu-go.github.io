@@ -13,7 +13,7 @@ timezone: Asia/Tokyo
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://wangxiaoyu-go.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -94,3 +94,7 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true?
   #external_link: false
+
+# sitemap
+sitemap:
+   path: sitemap.xml
